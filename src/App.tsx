@@ -2,6 +2,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { DarkMode, LightMode } from '@mui/icons-material';
 
 import { Button, createTheme, CssBaseline, PaletteMode, ThemeProvider, useMediaQuery } from '@mui/material';
 import { useMemo, useState } from 'react';
@@ -27,7 +28,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Button variant="contained" onClick={handleClick}>Hello World</Button>
+      <Button variant="contained" onClick={handleClick}>
+        { mode === 'light' ? <LightMode /> : <DarkMode />}
+      </Button>
     </ThemeProvider>
   )
 }

@@ -2,6 +2,12 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { Button } from '@mui/material';
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -20,6 +26,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <Button variant="contained">Hello World</Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

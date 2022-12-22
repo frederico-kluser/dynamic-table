@@ -4,10 +4,14 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import { Button } from '@mui/material';
+import EnhancedTable from './component/Table';
 
 function App() {
   return (
-    <Button variant="contained">Hello World</Button>
+    <>
+      <Button variant="contained">Hello World</Button>
+      <EnhancedTable />
+    </>
   )
 }
 

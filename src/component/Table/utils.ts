@@ -34,7 +34,7 @@ export const stableSort = <T>(array: readonly T[], comparator: (a: T, b: T) => n
 };
 
 export const makeHeadCells = (data: any) => {
-	return Object.keys(data[0]).map((property) => {
+	const result = Object.keys(data[0]).map((property) => {
 		if (property !== 'createdAt') {
 			return {
 				id: property,
@@ -44,4 +44,22 @@ export const makeHeadCells = (data: any) => {
 			};
 		}
 	});
+
+	console.log('makeHeadCells :', result);
+
+	return result;
 };
+
+export const getFormattedData = (data: any) =>
+	data.map((item: any) => {
+		const newItem: any = {};
+		Object.keys(item).forEach((property) => {
+			if (!isNaN(item[property])) {
+				newItem[property] = parseInt(item[property]);
+			} else {
+				newItem[property] = item[property];
+			}
+		});
+
+		return newItem;
+	});

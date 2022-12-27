@@ -28,11 +28,15 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Button variant="contained" onClick={handleClick}>
-        { mode === 'light' ? <LightMode /> : <DarkMode />}
-      </Button>
-      <EnhancedTable />
+      <div style={{
+        padding: 16,
+      }}>
+        <CssBaseline />
+        <Button variant="contained" onClick={handleClick}>
+          { mode === 'light' ? <LightMode /> : <DarkMode />}
+        </Button>
+        <EnhancedTable />
+      </div>
     </ThemeProvider>
   )
 }

@@ -11,4 +11,6 @@ export interface EnhancedTableProps {
 
 export interface EnhancedTableToolbarProps {
 	numSelected: number;
+	setAddItem?: any;
+	setDeleteItem?: any;
 }

@@ -15,9 +15,12 @@ import { getComparator, stableSort } from './utils';
 import useFetch from '../../hooks/useFetch';
 import EnhancedTableToolbar from './TableToolbar';
 import EnhancedTableHead from './TableHead';
+import TableForm from './TableForm';
 
 export default function EnhancedTable() {
-  const request: any = useFetch('https://63aad5acfdc006ba604d5bf4.mockapi.io/Containers') || {};
+  const url = 'https://63aad5acfdc006ba604d5bf4.mockapi.io/Containers';
+  const request: any = useFetch(url) || {};
+  const [addItem, setAddItem] = React.useState(false);
 
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof any>('name');
@@ -85,13 +88,13 @@ export default function EnhancedTable() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      {request.data && (<>
+      {(!addItem && request.data) && (<>
         <FormControlLabel
           control={<Switch checked={dense} onChange={handleChangeDense} />}
           label="Dense padding"
         />
         <Paper sx={{ width: '100%', mb: 2 }}>
-          <EnhancedTableToolbar numSelected={selected.length} />
+          <EnhancedTableToolbar numSelected={selected.length} setAddItem={setAddItem} />
           <TableContainer>
             <Table
               sx={{ minWidth: 750 }}
@@ -185,6 +188,7 @@ export default function EnhancedTable() {
       {!request.data && (<>
         <h1>Loading</h1>
       </>)}
+      {addItem && <TableForm data={request.data} setAddItem={setAddItem} url={url} />}
     </Box>
   );
 };

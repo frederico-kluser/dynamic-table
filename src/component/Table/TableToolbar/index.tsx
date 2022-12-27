@@ -1,7 +1,6 @@
 import { alpha, IconButton, TextField, Toolbar, Tooltip, Typography } from "@mui/material";
 import { EnhancedTableToolbarProps } from "../types";
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
+import { AddCircle, Delete } from "@mui/icons-material";
 
 const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
   const { numSelected } = props;
@@ -33,20 +32,21 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          Containers
         </Typography>
       )}
-      <TextField id="outlined-basic" label="Filter" variant="outlined" />
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
-            <DeleteIcon />
+            <Delete />
           </IconButton>
         </Tooltip>
       ) : (
         <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
+          <IconButton onClick={() => {
+            props.setAddItem((prev: boolean) => !prev)
+          }}>
+            <AddCircle />
           </IconButton>
         </Tooltip>
       )}

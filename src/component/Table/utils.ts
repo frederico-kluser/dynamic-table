@@ -1,14 +1,4 @@
-import { Data, Order } from './types';
-
-export const createData = (name: string, calories: number, fat: number, carbs: number, protein: number): Data => {
-	return {
-		name,
-		calories,
-		fat,
-		carbs,
-		protein,
-	};
-};
+import { Order } from './types';
 
 const descendingComparator = <T>(a: T, b: T, orderBy: keyof T) => {
 	if (b[orderBy] < a[orderBy]) {

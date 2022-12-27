@@ -1,6 +1,5 @@
 import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
-import { headCells } from "../data";
-import { Data, EnhancedTableProps } from "../types";
+import { EnhancedTableProps } from "../types";
 import { visuallyHidden } from '@mui/utils';
 import { makeHeadCells } from "../utils";
 
@@ -8,7 +7,7 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
   const { onSelectAllClick, order, orderBy, numSelected, data, onRequestSort } =
     props;
   const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+    (property: keyof any) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
     };
 

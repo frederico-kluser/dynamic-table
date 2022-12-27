@@ -10,8 +10,7 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { Data, Order } from './types';
-import { rows } from './data';
+import { Order } from './types';
 import { getComparator, stableSort } from './utils';
 import useFetch from '../../hooks/useFetch';
 import EnhancedTableToolbar from './TableToolbar';
@@ -21,7 +20,7 @@ export default function EnhancedTable() {
   const request: any = useFetch('https://63aad5acfdc006ba604d5bf4.mockapi.io/Containers') || {};
 
   const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof Data>('calories');
+  const [orderBy, setOrderBy] = React.useState<keyof any>('name');
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -29,7 +28,7 @@ export default function EnhancedTable() {
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
-    property: keyof Data,
+    property: keyof any,
   ) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');

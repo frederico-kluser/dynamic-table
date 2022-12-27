@@ -42,3 +42,16 @@ export const stableSort = <T>(array: readonly T[], comparator: (a: T, b: T) => n
 	});
 	return stabilizedThis.map((el) => el[0]);
 };
+
+export const makeHeadCells = (data: any) => {
+	return Object.keys(data[0]).map((property) => {
+		if (property !== 'createdAt') {
+			return {
+				id: property,
+				numeric: !isNaN(data[0][property]),
+				disablePadding: false,
+				label: property,
+			};
+		}
+	});
+};

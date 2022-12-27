@@ -2,9 +2,10 @@ import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@
 import { headCells } from "../data";
 import { Data, EnhancedTableProps } from "../types";
 import { visuallyHidden } from '@mui/utils';
+import { makeHeadCells } from "../utils";
 
 const EnhancedTableHead = (props: EnhancedTableProps) => {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+  const { onSelectAllClick, order, orderBy, numSelected, data, onRequestSort } =
     props;
   const createSortHandler =
     (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
@@ -17,15 +18,15 @@ const EnhancedTableHead = (props: EnhancedTableProps) => {
         <TableCell padding="checkbox">
           <Checkbox
             color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
+            indeterminate={numSelected > 0 && numSelected < data.length}
+            checked={data.length > 0 && numSelected === data.length}
             onChange={onSelectAllClick}
             inputProps={{
               'aria-label': 'select all desserts',
             }}
           />
         </TableCell>
-        {headCells.map((headCell) => (
+        {makeHeadCells(data).map((headCell: any) => (
           <TableCell
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}

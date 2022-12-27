@@ -21,7 +21,7 @@ export interface EnhancedTableProps {
 	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	order: Order;
 	orderBy: string;
-	rowCount: number;
+	data: any;
 }
 
 export interface EnhancedTableToolbarProps {
